@@ -1,0 +1,80 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:WordRecorder.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
+             x:Class="WordRecorder.Views.SettingsView"
+             x:DataType="vm:SettingsViewModel">
+
+    <ScrollViewer Padding="24">
+        <StackPanel Spacing="24">
+            <!-- Theme Section -->
+            <StackPanel Spacing="12">
+                <TextBlock Text="主题设置" FontSize="18" FontWeight="SemiBold"/>
+                <Border Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}"
+                        CornerRadius="8" Padding="16">
+                    <StackPanel Spacing="16">
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="应用主题" FontSize="14"/>
+                            <ComboBox ItemsSource="{Binding Themes}" 
+                                      SelectedItem="{Binding SelectedTheme}"
+                                      HorizontalAlignment="Stretch"/>
+                            <TextBlock Text="{Binding ThemeDisplay}" FontSize="12"
+                                       Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- Accent Color Section -->
+            <StackPanel Spacing="12">
+                <TextBlock Text="主题色" FontSize="18" FontWeight="SemiBold"/>
+                <Border Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}"
+                        CornerRadius="8" Padding="16">
+                    <StackPanel Spacing="16">
+                        <TextBlock Text="选择主题色" FontSize="14"/>
+                        <ItemsControl ItemsSource="{Binding PresetColors}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="x:String">
+                                    <Border Width="40" Height="40" CornerRadius="20" Margin="4"
+                                            Background="{Binding}" Cursor="Hand"
+                                            PointerPressed="OnColorSelected">
+                                        <Border.Effect>
+                                            <DropShadowEffect BlurRadius="4" Opacity="0.3"/>
+                                        </Border.Effect>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="当前选择" FontSize="12"
+                                       Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"/>
+                            <StackPanel Orientation="Horizontal" Spacing="12">
+                                <Border Width="32" Height="32" CornerRadius="16"
+                                        Background="{Binding SelectedAccentColor}"/>
+                                <TextBlock Text="{Binding SelectedAccentColor}" VerticalAlignment="Center"
+                                           FontSize="14"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- Actions -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="12">
+                <Button Content="恢复默认" Command="{Binding ResetToDefaultCommand}"
+                        Padding="16,8" CornerRadius="4"/>
+                <Button Content="保存设置" Command="{Binding SaveCommand}"
+                        Padding="16,8" CornerRadius="4"
+                        HorizontalContentAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
