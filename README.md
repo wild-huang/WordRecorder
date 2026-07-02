@@ -1,3 +1,8 @@
+# 写在前面
+
+>这个应用是使用ai制作的，所以说ai味道会特别重。bro网上找不到一个简单好用的生词本应用(也许是伪需求?)所以烧了将近10块钱的token把这鬼东西搞出来了
+
+
 # 📖 生词记录 (WordRecorder)
 
 一款简洁的生词记录工具，支持有道词典查询、AI 猜词、多格式导出。
@@ -116,3 +121,6 @@ WordRecorder/
 - [有道词典](https://www.youdao.com/) - 词典查询 API
 - [灵格斯词霸](http://www.lingoes.cn/) - 词典文件格式参考
 - [kdictionary-lingoes](https://github.com/librehat/kdictionary-lingoes) - LD2 解析参考
+
+
+## Powered by OpenCode&XiaomiMIMO
